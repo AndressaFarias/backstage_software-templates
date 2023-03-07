@@ -2,28 +2,22 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: postgres-aurora
-  title: Create postgres aurora
+  title: Create postgres aurora AWS
   description: Template postress aurora
+  tags: 
+    - plataforma
 spec:
-  owner: backstage/techdocs-core
+  owner: sre
   type: service
-
   parameters:
-    - title: Fill in some steps
+    - title: Fill in some steps - teste
       required:
-        - name #
-        - postgres_cluster
-        - namespace
         - kubernetes_cluster
+        - namespace
+        - postgres_cluster
       properties:
-        name:
-          title: Postgres Cluster Name
-          type: string
-          description: Unique name of the component
-          ui:field: EntityNamePicker
-          ui:autofocus: true
-        postgres_cluster:
-          title: Postgres Cluster Name
+        kubernetes_cluster:
+          title: Name Kubernetes Cluster
           type: string
           description: Unique name of the component
           ui:field: EntityNamePicker
@@ -34,21 +28,20 @@ spec:
           description: Unique name of the component
           ui:field: EntityNamePicker
           ui:autofocus: true
-        kubernetes_cluster:
-          title: Kubernetes Cluster Name
+        postgres_cluster:
+          title: Postgres Cluster Name
           type: string
           description: Unique name of the component
           ui:field: EntityNamePicker
           ui:autofocus: true
-        
-        description:
-          title: Description
+        owner:
+          title: Application Owner
           type: string
-          description: Description of the component
-        targetPath:
-          title: Target Path in repo
-          type: string
-          description: Name of the directory to create in the repository
+          description: Github team that owns the repository
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKnds:
+              - Group
     - title: Choose a location
       required:
         - repoUrl
