@@ -7,8 +7,10 @@ metadata:
   tags: 
     - plataforma
 spec:
-  owner: sre
+  owner: squad-sre
   type: service
+
+  # these are the steps which are rendered in the frontend with the form input
   parameters:
     - title: Fill in some steps
       required:
@@ -39,18 +41,19 @@ spec:
           #ui:field: EntityNamePicker
           #ui:autofocus: true
         
-    - title: Choose a location
-      required:
-        - repoUrl
-      properties:
-        repoUrl:
-          title: Repository Location
-          type: string
-          ui:field: RepoUrlPicker
-          ui:options:
-            allowedHosts:
-              - github.com
+#    - title: Choose a location
+#      required:
+#        - repoUrl
+#      properties:
+#        repoUrl:
+#          title: Repository Location
+#          type: string
+#          ui:field: RepoUrlPicker
+#          ui:options:
+#            allowedHosts:
+#              - github.com
 
+  # aqui estão as etapas que são executadas em série no back-end do scaffolder
   steps:
     - id: fetch-base
       name: Fetch Base
