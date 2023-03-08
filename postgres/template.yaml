@@ -17,7 +17,7 @@ spec:
         - postgres_cluster
       properties:
         kubernetes_cluster:
-          title: Name Kubernetes Cluster
+          title: TESTE - Name Kubernetes Cluster
           type: string
           description: Name of the cluster kubernetes
           enum: 
@@ -27,13 +27,13 @@ spec:
             - "prod-tools-01"
             - "prod-eks-03"
         namespace:
-          title: Namespace
+          title: TESTE - Namespace
           type: string
           description: Name of the namespace in Kubernetes Cluster
           #ui:field: EntityNamePicker
           #ui:autofocus: true
         postgres_cluster:
-          title: Postgres Cluster Name
+          title: TESTE - Postgres Cluster Name
           type: string
           description: Unique name of the new Postgres Cluster
           #ui:field: EntityNamePicker
