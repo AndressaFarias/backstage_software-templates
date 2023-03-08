@@ -16,43 +16,29 @@ spec:
         - namespace
         - postgres_cluster
       properties:
-        kluster:
-          title: Name Kubernetes Cluster
-          type: string
-          description: Unique name of the component
-          enum: 
-            - "data-prod"
-            - "platform-prod"
-            - "data-stg"
-          default: "data-stg"
-          #ui:field: EntityNamePicker
-          #ui:autofocus: true
         kubernetes_cluster:
           title: Name Kubernetes Cluster
           type: string
           description: Unique name of the component
-          ui:field: EntityNamePicker
-          ui:autofocus: true
+          enum: 
+            - "stg-tools-01"
+            - "stg-eks-03"
+            - "stg-data-02"
+            - "prod-tools-01"
+            - "prod-eks-03"
         namespace:
           title: Namespace Cluster
           type: string
           description: Unique name of the component
-          ui:field: EntityNamePicker
-          ui:autofocus: true
+          #ui:field: EntityNamePicker
+          #ui:autofocus: true
         postgres_cluster:
           title: Postgres Cluster Name
           type: string
           description: Unique name of the component
-          ui:field: EntityNamePicker
-          ui:autofocus: true
-        owner:
-          title: Application Owner
-          type: string
-          description: Github team that owns the repository
-          ui:field: OwnerPicker
-          ui:options:
-            allowedKnds:
-              - Group
+          #ui:field: EntityNamePicker
+          #ui:autofocus: true
+        
     - title: Choose a location
       required:
         - repoUrl
