@@ -1,9 +1,9 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: postgres-aurora
-  title: Create postgres aurora AWS
-  description: Template postress aurora
+  name: amazon-rds
+  title: Template create Amazon RDS
+  description: Template to create Amazon RDS, Engine Aurora PostgreSQL
   tags: 
     - plataforma
 spec:
@@ -14,44 +14,39 @@ spec:
   parameters:
     - title: Fill in some steps
       required:
-        - kubernetes_cluster
+        - kubernetes_cluster_name
         - namespace
-        - postgres_cluster
+        - rds_cluster_name
       properties:
-        kubernetes_cluster:
-          title: TESTE - Name Kubernetes Cluster
+        kubernetes_cluster_name:
+          title: Kubernetes Cluster Name
           type: string
-          description: Name of the cluster kubernetes
+          description: Name of the kubernetes cluster.
           enum: 
-            - "stg-tools-01"
             - "stg-eks-03"
-            - "stg-data-02"
-            - "prod-tools-01"
             - "prod-eks-03"
         namespace:
-          title: TESTE - Namespace
+          title: Namespace
           type: string
           description: Name of the namespace in Kubernetes Cluster
-          #ui:field: EntityNamePicker
-          #ui:autofocus: true
-        postgres_cluster:
-          title: TESTE - Postgres Cluster Name
+        rds_cluster_name:
+          title: RDS Cluster Name
           type: string
-          description: Unique name of the new Postgres Cluster
-          #ui:field: EntityNamePicker
-          #ui:autofocus: true
+          description: Unique name of the new RDS Cluster
         
-#    - title: Choose a location
-#      required:
-#        - repoUrl
-#      properties:
-#        repoUrl:
-#          title: Repository Location
-#          type: string
-#          ui:field: RepoUrlPicker
-#          ui:options:
-#            allowedHosts:
-#              - github.com
+    - title: Github Repository
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+            allowedOwners:
+              - loggi
 
   # aqui estão as etapas que são executadas em série no back-end do scaffolder
   steps:
@@ -61,28 +56,26 @@ spec:
       input:
         url: ./template
         values:
-          name: ${{parameters.name}}
-    - id: fetch-docs
-      name: Fetch Docs
-      action: fetch:plain
-      input:
-        targetPath: ./community
-        url: https://github.com/backstage/community/tree/main/backstage-community-sessions
+        kubernetes_cluster_name: ${{ parameters.kubernetes_cluster_name }}
+        namespace: ${{ parameters.namespace }}
+        rds_cluster_name: ${{ parameters.rds_cluster_name }}
 
-    - id: publish
-      name: Publish
-      action: publish:github:pull-request
-      input:
-        repoUrl: ${{ parameters.repoUrl }}
-        title: "Create new project: ${{parameters.name}}"
-        branchName: create-${{parameters.name}}
-        description: |
-          # New project: ${{parameters.name}}
 
-          ${{ parameters.description if parameters.description }}
-        targetPath: ${{ parameters.targetPath if parameters.targetPath else parameters.name }}
 
+#    - id: publish
+#      name: Publish
+#      action: publish:github:pull-request
+#      input:
+#        repoUrl: ${{ parameters.repoUrl }}
+#        title: "Create new project: ${{parameters.name}}"
+#        branchName: create-${{parameters.name}}
+#        description: |
+#          # New project: ${{parameters.name}}
+#
+#          ${{ parameters.description if parameters.description }}
+#        targetPath: ${{ parameters.targetPath if parameters.targetPath else parameters.name }}
+#
   output:
     links:
       - url: ${{steps.publish.output.remoteUrl}}
-        text: "Go to PR"
+        text: "SO-CORRO - Go to PR"
