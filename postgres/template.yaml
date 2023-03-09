@@ -56,9 +56,9 @@ spec:
       input:
         url: ./template
         values:
-        kubernetes_cluster_name: ${{ parameters.kubernetes_cluster_name }}
-        namespace: ${{ parameters.namespace }}
-        rds_cluster_name: ${{ parameters.rds_cluster_name }}
+          kubernetes_cluster_name: ${{ parameters.kubernetes_cluster_name }}
+          namespace: ${{ parameters.namespace }}
+          rds_cluster_name: ${{ parameters.rds_cluster_name }}
 
 
 
