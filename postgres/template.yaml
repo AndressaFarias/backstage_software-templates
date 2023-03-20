@@ -12,13 +12,15 @@ spec:
   parameters:
     - title: Fill in some steps
       required:
-        - kubernetes_cluster
-        - namespace
-        - postgres_cluster
+        - name
       properties:
         # Você pode coletar dados de texto do usuário usando o tipo string. Aqui está o exemplo mais básico. Ele solicitará ao usuário um nome.
         name:
           type: string
+        # Você pode solicitar ao usuário uma lista de entities de catálogo usando a opção ui:field: EntityPicker da seguinte forma:
+        entity:
+          type: string
+          ui:field: EntityPicker
         kubernetes_cluster:
           title: Name Kubernetes Cluster
           type: string
