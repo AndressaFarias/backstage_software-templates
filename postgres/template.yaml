@@ -16,6 +16,9 @@ spec:
         - namespace
         - postgres_cluster
       properties:
+        # Você pode coletar dados de texto do usuário usando o tipo string. Aqui está o exemplo mais básico. Ele solicitará ao usuário um nome.
+        name:
+          type: string
         kubernetes_cluster:
           title: Name Kubernetes Cluster
           type: string
