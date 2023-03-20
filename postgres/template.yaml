@@ -2,8 +2,8 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: postgres-aurora
-  title: Create postgres aurora AWS
-  description: Template postress aurora
+  title: Create template array filed
+  description: Template teste
   tags: 
     - plataforma
 spec:
@@ -21,11 +21,9 @@ spec:
           type: string
           description: Name of the cluster kubernetes
           enum: 
-            - "stg-tools-01"
-            - "stg-eks-03"
-            - "stg-data-02"
-            - "prod-tools-01"
-            - "prod-eks-03"
+            - "stg-01"
+            - "stg-03"
+            - "stg-02"
         namespace:
           title: Namespace
           type: string
