@@ -40,12 +40,12 @@ spec:
             allowedOwners:
               - AcmeInc 
         # The RepoUrlPicker uses the allowedHosts to decide how to build the repo url output value. If you use bitbucket.org it will output a valid repo url for Bitbucket.
-        repoUrl:
-          type: string
-          ui:field: RepoUrlPicker
-          ui:options:
-            allowedHosts:
-              - bitbucket.org
+        # repoUrl:
+        #  type: string
+        #  ui:field: RepoUrlPicker
+        #  ui:options:
+        #    allowedHosts:
+        #      - bitbucket.org
         # Owner picker : O seletor de proprietário permite que o usuário selecione um usuário/grupo no catálogo do Backstage. por exemplo
         owner:
           type: string
