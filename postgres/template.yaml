@@ -39,6 +39,13 @@ spec:
               - github.com
             allowedOwners:
               - AcmeInc 
+        # The RepoUrlPicker uses the allowedHosts to decide how to build the repo url output value. If you use bitbucket.org it will output a valid repo url for Bitbucket.
+        repoUrl:
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - bitbucket.org
         kubernetes_cluster:
           title: Name Kubernetes Cluster
           type: string
