@@ -48,6 +48,7 @@ spec:
         #      - bitbucket.org
         # Owner picker : O seletor de proprietário permite que o usuário selecione um usuário/grupo no catálogo do Backstage. por exemplo
         owner:
+          title: grupo proprietarioa
           type: string
           ui:field: OwnerPicker
         kubernetes_cluster:
