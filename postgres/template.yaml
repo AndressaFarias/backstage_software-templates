@@ -29,6 +29,16 @@ spec:
         ownedEntity:
           type: string
           ui:field: EntityNamePicker
+        # Repository picker
+        # O seletor de repositório pode permitir que o usuário selecione o nome e o local de um novo repositório. O seletor restringe o local de destino do repositório para tornar um pouco mais fácil para o usuário selecionar um local de destino.
+        repoUrl:
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+            allowedOwners:
+              - AcmeInc 
         kubernetes_cluster:
           title: Name Kubernetes Cluster
           type: string
