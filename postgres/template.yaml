@@ -115,6 +115,14 @@ spec:
               title: IDADE
               type: number
 
+        # array
+        # Você pode solicitar um array de propriedades usando a opção de array.
+        # A opção de `items` pode ser de qualquer tipo: array, object, string ou number como você quiser.
+        languages:
+          type: array
+          items:
+            type: string
+
 
     - title: Choose a location
       required:
