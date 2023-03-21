@@ -72,6 +72,25 @@ spec:
           #ui:field: EntityNamePicker
           #ui:autofocus: true
         
+        title: Custom array of strings
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              namespace:
+                type: string
+              role:
+                type: string
+                oneOf:
+                - title: read-only
+                  const: read-only
+                - title: read-write
+                  const: read-write
+                - title: migration
+                  const: migration
+        
         custom:
           title: custom
           type: string
@@ -122,6 +141,8 @@ spec:
           type: array
           items:
             type: string
+
+
 
 
     - title: Choose a location
