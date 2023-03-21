@@ -101,6 +101,21 @@ spec:
           title: tamanho
           type: number
 
+
+        # object
+        # O objeto permite a coleta de tipos de dados mais complexos do usuário. 
+        # Contém a opção de `properties`para adicionar variáveis ​​ao objeto da seguinte forma:
+        person:
+          type: object
+          properties:
+            name:
+              title: NOME COMPLETO
+              type: string
+            age:
+              title: IDADE
+              type: number
+
+
     - title: Choose a location
       required:
         - repoUrl
