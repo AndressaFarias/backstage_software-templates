@@ -21,6 +21,14 @@ spec:
         entity:
           type: string
           ui:field: EntityPicker
+        # Owned entity picker : Alternativamente, se você quiser que o usuário selecione apenas as entidades que já possuem, você pode querer usar o OwnedEntityPicker.
+        ownedEntity:
+          type: string
+          ui:field: OwnedEntityPicker
+        # Entity name picker : Se você quiser um pouco de validação quando o usuário inserir um nome de Entidade, poderá usar o EntityNamePicker. Isso impedirá que o usuário insira um nome de entidade que não seja um nome de entidade aceitável.
+        ownedEntity:
+          type: string
+          ui:field: EntityNamePicker
         kubernetes_cluster:
           title: Name Kubernetes Cluster
           type: string
