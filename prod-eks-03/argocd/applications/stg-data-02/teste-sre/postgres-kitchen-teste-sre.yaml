@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: stg-data-02-postgres-kitchen-teste-sre
+  namespace: argocd
+spec:
+  project: stg-data-02-teste-sre
+  ignoreDifferences:
+  - group: rds.services.k8s.aws
+    kind: DBCluster
+    name: kitchen-teste-sre
+    namespace: teste-sre
+    jsonPointers:
+    - /spec/kmsKeyID
+  sources:
+    - repoURL: "http://chartmuseum.chartmuseum.svc.cluster.local"
+      targetRevision: "v0.4.2"
+      chart: postgres
+      helm:
+        valueFiles:
+        - $values/stg-data-02/teste-sre/postgres/kitchen-teste-sre.yaml
+        fileParameters:
+        - name: variables.cluster
+          path: kubectl://ack-system/configmap/cluster-variables/jsonpath={.data.variables}
+        - name: variables.namespace
+          path: kubectl://teste-sre/configmap/namespace-variables/jsonpath={.data.variables}
+        - name: users.root.data
+          path: kubectl://?teste-sre/secret/kitchen-teste-sre-root-password/jsonpath={.data}
+    - repoURL: "git@github.com:loggi/infrastructure-live.git"
+      targetRevision: HEAD
+      ref: values
+  destination:
+    name: stg-data-02
+    namespace: teste-sre
+  syncPolicy:
+    automated: {}
